@@ -4,25 +4,33 @@ class ProductCart extends StatelessWidget {
   final String title;
   final double price;
   final String image;
+  final Color backgroudColor;
 
   const ProductCart({
     super.key,
     required this.title,
     required this.price,
     required this.image,
+    required this.backgroudColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color.fromRGBO(216, 240, 253, 1),
+      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: backgroudColor,
+        borderRadius: BorderRadius.circular(20),
+      ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(title, style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: 5),
-          Text('\$$price'),
+          Text('\$$price', style: Theme.of(context).textTheme.bodySmall),
           const SizedBox(height: 5),
-          Image.asset(image, height: 175),
+          Center(child: Image.asset(image, height: 175)),
         ],
       ),
     );
